@@ -5,7 +5,7 @@ import uuidv4 from 'uuid/v4'
 const LOCAL_STORAGE_KEY = 'todoApp.todos'
 
 function App() {
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState([{id:1, name:'ToDo 1'}, {id:2, name:'ToDo 2'}])
   const todoNameRef = useRef()
 
   useEffect(() => {
@@ -27,6 +27,7 @@ function App() {
   function handleAddTodo(e) {
     const name = todoNameRef.current.value
     if (name === '') return
+    console.log(name);
     setTodos(prevTodos => {
       return [...prevTodos, { id: uuidv4(), name: name, complete: false}]
     })
